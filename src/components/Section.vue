@@ -11,7 +11,7 @@ defineProps<{
 const text = ref<string>()
 
 onMounted(async () => {
-  const res = await fetch('/src/public/project.md')
+  const res = await fetch('/project.md')
   const rawMarkdown = await res.text()
   const html = await marked(rawMarkdown)
   text.value = DOMPurify.sanitize(html)

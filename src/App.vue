@@ -30,6 +30,10 @@ const menuItems: { text: string, link: string }[] = [
 </template>
 
 <style module>
+html {
+  scroll-behavior: smooth;
+}
+
 .main {
   height: 100vh;
   /* width: 100%; */
