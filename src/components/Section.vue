@@ -5,7 +5,6 @@ import { marked } from 'marked'
 
 defineProps<{
   id: string
-  header?: string
 }>()
 
 const text = ref<string>()
