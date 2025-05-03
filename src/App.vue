@@ -21,7 +21,7 @@ const menuItems: { text: string, link: string }[] = [
       :class="$style.menu"
     />
   </Teleport>
-  <div :class="$style.app">
+  <div :class="$style.main">
     <Section
       id="project"
       header="Проект"
@@ -31,9 +31,10 @@ const menuItems: { text: string, link: string }[] = [
 </template>
 
 <style module>
-.app {
+.main {
   height: 100vh;
-  width: 100%;
+  /* width: 100%; */
+  max-width: 600px;
 }
 
 .menu {
