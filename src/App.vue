@@ -25,7 +25,6 @@ const menuItems: { text: string, link: string }[] = [
     <Section
       id="project"
       header="Проект"
-      text="fsdfs"
     />
   </div>
 </template>
@@ -39,7 +38,7 @@ const menuItems: { text: string, link: string }[] = [
 
 .menu {
   position: fixed;
-  top: 200px;
+  top: 100px;
   /* left: 40px; */
 }
 </style>

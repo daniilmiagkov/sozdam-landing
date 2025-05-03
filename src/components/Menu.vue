@@ -10,7 +10,7 @@ defineProps<{
       v-for="item in items"
       :key="item.link"
     >
-      <a :href="item.link">{{ item.text }}</a>
+      <a :href="`#${item.link}`">{{ item.text }}</a>
     </li>
   </ul>
 </template>
