@@ -4,6 +4,7 @@ import Progress from './Progress.vue'
 defineProps<{
   items: { text: string, link: string }[]
 }>()
+
 </script>
 
 <template>
@@ -27,11 +28,6 @@ defineProps<{
 <style module>
 .menu {
   display: flex;
-}
-
-.progress {
-  /* width: 100%; */
-  /* height: 20px; */
 }
 
 .list {
