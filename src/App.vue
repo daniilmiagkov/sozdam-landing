@@ -78,6 +78,7 @@ onMounted(() => {
 .app {
   display: grid;
   grid-template-columns: 160px 600px 160px;
+  margin: 64px auto;
 }
 .menu {
   position: fixed;
