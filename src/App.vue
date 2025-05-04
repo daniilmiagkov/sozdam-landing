@@ -3,28 +3,27 @@ import About from './components/About.vue'
 import Menu from './components/Menu.vue'
 import Section from './components/Section.vue'
 
-const menuItems: { text: string, link: string }[] = [
-  {
-    text: 'Проект',
-    link: 'project',
-  },
-  {
-    text: 'О нас',
-    link: 'about',
-  },
+const sections = [
+  { text: 'Проект', link: 'project' },
+  { text: 'О нас', link: 'about' },
 ]
 </script>
 
 <template>
-  <Teleport to="body">
+  <div :class="$style.app">
     <Menu
-      :items="menuItems"
+      :items="sections"
       :class="$style.menu"
     />
-  </Teleport>
-  <div :class="$style.main">
-    <Section id="project" />
-    <About id="about" />
+
+    <div :class="$style.spacer" />
+
+    <div :class="$style.content">
+      <Section id="project" />
+      <About id="about" />
+    </div>
+
+    <div :class="$style.spacer" />
   </div>
 </template>
 
@@ -33,20 +32,22 @@ html {
   scroll-behavior: smooth;
 }
 
-
-
-.main {
-  height: 100vh;
-  /* width: 100%; */
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
+.app {
+  display: grid;
+  grid-template-columns: 100px 600px 100px;
 }
 
 .menu {
   position: fixed;
-  top: 100px;
-  /* left: 40px; */
+}
+
+.spacer {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }
 </style>
