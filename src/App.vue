@@ -1,45 +1,54 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref, useTemplateRef } from 'vue'
 import { useIntersectionObserver } from '@vueuse/core'
-import { useTemplateRef } from 'vue'
+import { useRouter } from 'vue-router'
+import About from './components/About.vue'
 import Menu from './components/Menu.vue'
 import Section from './components/Section.vue'
-import About from './components/About.vue'
 
-// Конфиг секций
+// Секции
 const sections = [
   { text: 'Проект', link: 'project' },
-  { text: 'О нас',   link: 'about'   },
+  { text: 'О нас', link: 'about' },
 ]
 
-const projectEl = useTemplateRef<HTMLElement>('project')
-const aboutEl   = useTemplateRef<HTMLElement>('about')
-
+const router = useRouter()
 const currentIndex = ref(0)
 
-useIntersectionObserver(
-  projectEl,
-  ([{ isIntersecting, intersectionRatio }]) => {
-    if (isIntersecting && intersectionRatio >= 0.5) {
-      currentIndex.value = 0
-      history.replaceState({}, '', '#project')
-    }
-  },
-  { threshold: 0.5 }
-)
+// Шаблонные рефы
+const projectEl = useTemplateRef<HTMLElement>('project')
+const aboutEl = useTemplateRef<HTMLElement>('about')
 
-useIntersectionObserver(
-  aboutEl,
-  ([{ isIntersecting, intersectionRatio }]) => {
-    if (isIntersecting && intersectionRatio >= 0.5) {
-      currentIndex.value = 1
-      history.replaceState({}, '', '#about')
-    }
-  },
-  { threshold: 0.5 }
-)
+onMounted(() => {
+  // Когда в 50% видна "Проект"
+  useIntersectionObserver(
+    projectEl,
+    ([{ isIntersecting, intersectionRatio }]) => {
+      if (isIntersecting && intersectionRatio >= 0.5) {
+        currentIndex.value = 0
+        router.replace({ hash: '#project' }).catch(() => {})
+      }
+    },
+    {
+      threshold: 0.5,
+    },
+  )
+
+  // Когда в 50% видна "О нас"
+  useIntersectionObserver(
+    aboutEl,
+    ([{ isIntersecting, intersectionRatio }]) => {
+      if (isIntersecting && intersectionRatio >= 0.5) {
+        currentIndex.value = 1
+        router.replace({ hash: '#about' }).catch(() => {})
+      }
+    },
+    {
+      threshold: 0.5,
+    },
+  )
+})
 </script>
-
 
 <template>
   <div :class="$style.app">
@@ -48,11 +57,17 @@ useIntersectionObserver(
       :class="$style.menu"
     />
 
-    <div  />
+    <div />
 
     <div :class="$style.content">
-      <Section id="project" ref="project" />
-      <About id="about" ref="about" />
+      <Section
+        id="project"
+        ref="project"
+      />
+      <About
+        id="about"
+        ref="about"
+      />
     </div>
 
     <div />
@@ -65,7 +80,7 @@ html {
 }
 .app {
   display: grid;
-  grid-template-columns: 100px 600px 100px;
+  grid-template-columns: 160px 600px 160px;
 }
 .menu {
   position: fixed;
