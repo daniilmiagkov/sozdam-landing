@@ -42,22 +42,32 @@ onMounted(async () => {
       :key="human.name"
       :class="$style.human"
     >
+      <p v-html=" human.text" />
       <img
-        :src="human.name"
+        :src="`${human.name}.jpg`"
         alt=""
       >
-      <p v-html=" human.text" />
     </div>
   </section>
 </template>
 
-<style module>
+<style module lang="scss">
 .section {
   text-align: justify;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
 }
 
 .human {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+  display: flex;
+  gap: 30px;
+
+  img {
+    object-fit: cover;
+    flex-shrink: 0 1 auto;
+    max-width: 200px;
+    aspect-ratio: 9/16;
+  }
 }
 </style>
