@@ -75,9 +75,6 @@ onMounted(() => {
 </template>
 
 <style module>
-html {
-  scroll-behavior: smooth;
-}
 .app {
   display: grid;
   grid-template-columns: 160px 600px 160px;

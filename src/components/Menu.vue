@@ -15,6 +15,8 @@ const activeLink = computed(() => {
 
 <template>
   <div :class="$style.menu">
+    <Progress :class="$style.progress" />
+
     <ul :class="$style.list">
       <li
         v-for="item in items"
@@ -31,14 +33,15 @@ const activeLink = computed(() => {
         >{{ item.text }}</a>
       </li>
     </ul>
-    <Progress :class="$style.progress" />
   </div>
 </template>
 
 <style module lang="scss">
+$color: rgba(201, 201, 201, 0.425);
+
 .menu {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   max-width: 250px;
   align-items: center;
 }
@@ -48,32 +51,30 @@ const activeLink = computed(() => {
   padding: 0;
   display: flex;
   flex-direction: column;
-}
-
-.item {
-  margin-bottom: 12px;
-  border-radius: 8px;
+  gap: 12px;
 }
 
 .active {
-  background-color: #ceecf5;
+  background-color: $color;
+}
+
+.item {
+  border-radius: 8px;
 }
 
 .link {
   text-decoration: none;
   color: #333;
   font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  padding: 10px 16px;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 8px;
+
   display: block;
-  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .link:hover {
-  background-color: #ceecf5;
+  background-color: $color;
   color: #333;
 }
 

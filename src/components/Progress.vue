@@ -9,7 +9,6 @@ const progress = ref(0)
 
 onMounted(() => {
   progress.value = scrollYProgress.get()
-  console.log('onMounted, initial scrollYProgress:', progress.value)
 })
 
 let initialized = false
@@ -35,18 +34,17 @@ useMotionValueEvent(scrollYProgress, 'change', (latest) => {
   </ProgressRoot>
 </template>
 
-<style module>
+<style module lang="scss">
+$color: rgba(201, 201, 201, 0.425);
+
 .ProgressRoot {
   position: relative;
   overflow: hidden;
-  background: #eee;
   border-radius: 9999px;
-
-  /* Высота вертикального прогресс-бара */
+  border: $color 2px solid;
   width: 5px;
   height: 100px;
 
-  /* Сбрасываем 3D трансформацию */
   transform: translateZ(0) rotateX(180deg);
 }
 
@@ -57,10 +55,8 @@ useMotionValueEvent(scrollYProgress, 'change', (latest) => {
   width: 100%;
   height: 100%;
 
-  background-color: black;
-  /* transition: transform 660ms cubic-bezier(0.65, 0, 0.35, 1); */
+  background-color: $color;
 
-  /* Начальное положение будет изменяться по Y */
   transform: translateY(100%);
 }
 </style>
