@@ -32,42 +32,47 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section
-    :id="id"
-    :class="$style.section"
-  >
+  <section :id="id">
     <h3>Команда</h3>
-    <div
-      v-for="human in people"
-      :key="human.name"
-      :class="$style.human"
-    >
-      <p v-html=" human.text" />
-      <img
-        :src="`${human.name}.jpg`"
-        alt=""
+    <div :class="$style.content">
+      <div
+        v-for="human in people"
+        :key="human.name"
+        :class="$style.human"
       >
+        <div v-html=" human.text" />
+        <img
+          :src="`${human.name}.jpg`"
+          alt=""
+        >
+      </div>
     </div>
   </section>
 </template>
 
 <style module lang="scss">
-.section {
+.content {
   text-align: justify;
   display: flex;
-  gap: 30px;
+  gap: 64px;
   flex-direction: column;
 }
 
 .human {
   display: flex;
   gap: 30px;
+  align-content: flex-start;
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
 
   img {
     object-fit: cover;
     flex-shrink: 0 1 auto;
-    max-width: 200px;
-    aspect-ratio: 9/16;
+    max-height: 250px;
+    aspect-ratio: 3/4;
   }
 }
 </style>
