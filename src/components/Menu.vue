@@ -51,34 +51,38 @@ $color: rgba(201, 201, 201, 0.425);
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
 .active {
-  background-color: $color;
+  background-color: red($color: #000000);
 }
 
 .item {
   border-radius: 8px;
-}
 
-.link {
-  text-decoration: none;
-  color: #333;
-  font-size: 16px;
-  padding: 8px 16px;
-  border-radius: 8px;
+  .link {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 4px 16px;
+    border-radius: 8px;
 
-  display: block;
-  cursor: pointer;
+    text-align: left;
+    color: #5f5f5f;
+
+    display: block;
+    cursor: pointer;
+  }
+
+  &.active .link {
+    color: #252525;
+  }
 }
 
 .link:hover {
-  background-color: $color;
-  color: #333;
+  color: #808080;
 }
 
 .link:active {
-  color: #333;
+  color: #788e9b;
 }
 </style>
