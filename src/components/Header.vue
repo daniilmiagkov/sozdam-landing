@@ -44,7 +44,7 @@ const activeLink = computed(() => {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
   z-index: 100;
   padding: 1rem;
 }
