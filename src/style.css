@@ -13,7 +13,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   scrollbar-width: 0;
   overflow: scroll;
   -ms-overflow-style: none; /* Для Internet Explorer и Edge */
