@@ -55,12 +55,6 @@
   padding: 2rem 0;
   gap: 2rem;
 
-  h1 {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 1rem;
-  }
-
   h2 {
     font-size: 1.8rem;
     color: #444;

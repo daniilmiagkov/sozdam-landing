@@ -94,13 +94,6 @@ const team: TeamMember[] = [
   min-height: 100vh;
   padding: 2rem 0;
 
-  h1 {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 3rem;
-    text-align: center;
-  }
-
   h2 {
     font-size: 1.8rem;
     color: #444;
@@ -111,7 +104,7 @@ const team: TeamMember[] = [
 
 .container {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 40px auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 3rem;
@@ -157,27 +150,6 @@ const team: TeamMember[] = [
     line-height: 1.5;
     margin-bottom: 1.5rem;
     text-align: justify;
-  }
-}
-
-.links {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.link {
-  padding: 0.5rem 1rem;
-  color: #333;
-  text-decoration: none;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  transition: all 0.2s;
-
-  &:hover {
-    background: #333;
-    color: #fff;
-    border-color: #333;
   }
 }
 

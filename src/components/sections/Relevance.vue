@@ -49,11 +49,6 @@
   box-shadow: 0 6px 18px rgba(20, 30, 50, 0.04);
 }
 
-h1 {
-  font-size: 1.9rem;
-  margin-bottom: 0.6rem;
-  color: #111827;
-}
 .intro p {
   color: #374151;
   line-height: 1.6;

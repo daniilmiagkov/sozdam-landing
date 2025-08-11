@@ -54,9 +54,7 @@
   background: #fff;
   box-shadow: 0 6px 18px rgba(20, 30, 50, 0.04);
 }
-h1 {
-  font-size: 1.9rem;
-}
+
 .lead {
   color: #475569;
   margin-bottom: 1rem;
