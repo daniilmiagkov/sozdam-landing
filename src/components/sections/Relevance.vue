@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// пустой setup
 </script>
 
 <template>
@@ -11,32 +12,76 @@
 
     <section :class="$style.intro">
       <p>
-        В современном здравоохранении значительная часть времени уходит на документацию.
-        Средний приём занимает около 12 минут, и до 70% этого времени может уходить на оформление записей.
-        Наша цель — вернуть это время врачу и пациенту.
+        Современная медицина работает в условиях высокой плотности приёмов и возросших требований к отчётности.
+        Средний амбулаторный приём занимает около 12 минут, при этом на оформление документации по разным оценкам
+        может уходить до 60–70% этого времени. Врачам остаётся мало времени на тщательный сбор анамнеза, объективный
+        осмотр и обсуждение тактики лечения — это повышает риск ошибочных решений, ухудшает коммуникацию с пациентом
+        и ведёт к профессиональному выгоранию.
+      </p>
+
+      <p>
+        Проект «СОЗДАМ» направлен на снижение административной нагрузки: автоматизация распознавания речи,
+        привлечение NLP для извлечения клинических сущностей и автоматическое формирование структурированных
+        фрагментов медицинской документации позволит вернуть врачу самое ценное — время для пациента и клинического
+        мышления.
       </p>
     </section>
 
-    <section :class="$style.advantages">
-      <h2>Проблемы, которые решаем</h2>
-      <ul>
-        <li>
-          <strong>Меньше рутины:</strong>
-          снижение времени на оформление приёма.
-        </li>
-        <li>
-          <strong>Меньше ошибок:</strong>
-          структурированная запись уменьшает риск потерь и опечаток.
-        </li>
-        <li>
-          <strong>Больше внимания пациенту:</strong>
-          врач больше времени тратит на диагностику и общение.
-        </li>
-        <li>
-          <strong>Аналитика:</strong>
-          накопление анонимных данных для улучшения качества.
-        </li>
-      </ul>
+    <section :class="$style.impact">
+      <h2>Почему это важно</h2>
+
+      <div
+        :class="$style.cards"
+        role="list"
+      >
+        <article
+          role="listitem"
+          :class="$style.card"
+        >
+          <div :class="$style.cardHeader">
+            Улучшение качества приёма
+          </div>
+          <p :class="$style.desc">
+            Врач получает больше времени на сбор анамнеза и обсуждение тактики, что повышает качество клинического решения.
+          </p>
+        </article>
+
+        <article
+          role="listitem"
+          :class="$style.card"
+        >
+          <div :class="$style.cardHeader">
+            Снижение ошибок
+          </div>
+          <p :class="$style.desc">
+            Структурированная документация уменьшает риск потери важных данных и ошибок при передаче информации.
+          </p>
+        </article>
+
+        <article
+          role="listitem"
+          :class="$style.card"
+        >
+          <div :class="$style.cardHeader">
+            Профилактика выгорания
+          </div>
+          <p :class="$style.desc">
+            Снижение рутинной нагрузки уменьшает стресс и эмоциональное истощение персонала.
+          </p>
+        </article>
+
+        <article
+          role="listitem"
+          :class="$style.card"
+        >
+          <div :class="$style.cardHeader">
+            Данные для аналитики
+          </div>
+          <p :class="$style.desc">
+            Анонимизированные записи дают материал для улучшения протоколов, обучения моделей и мониторинга качества.
+          </p>
+        </article>
+      </div>
     </section>
   </section>
 </template>
@@ -47,38 +92,59 @@
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 6px 18px rgba(20, 30, 50, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .intro p {
   color: #374151;
   line-height: 1.6;
   font-size: 1.03rem;
+  margin: 0;
+  text-align: justify;
 }
 
-.advantages {
-  margin-top: 1rem;
+.impact {
+  margin-top: 0.6rem;
+
   h2 {
-    font-size: 1.2rem;
+    margin: 0 0 0.8rem 0;
     color: #0f172a;
-    margin-bottom: 0.6rem;
   }
-  ul {
-    list-style: none;
-    padding: 0;
+
+  .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 0.8rem;
-    li {
-      padding: 0.9rem;
-      background: #f8fafc;
-      border-radius: 8px;
-      strong {
-        display: block;
-        margin-bottom: 0.4rem;
-        color: #0f172a;
-      }
-      color: #4b5563;
-    }
+    gap: 1rem;
+  }
+
+  .card {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 1rem;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .cardHeader {
+    font-weight: 600;
+    color: #0b3b4a;
+    margin-bottom: 0.5rem;
+    font-size: 1.03rem;
+  }
+  .desc {
+    margin: 0;
+    color: #475569;
+    line-height: 1.45;
+    font-size: 0.98rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 1rem;
   }
 }
 </style>
