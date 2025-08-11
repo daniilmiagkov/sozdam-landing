@@ -1,46 +1,62 @@
 <script setup lang="ts">
-// Пустой setup - все делаем в шаблоне
+// пустой setup — логика в HomeSections (если понадобится)
 </script>
 
 <template>
   <section
     id="relevance"
+    data-section="relevance"
     :class="$style.section"
   >
-    <h1>Зачем?</h1>
+    <h1>Зачем? (Актуальность)</h1>
 
     <section :class="$style.intro">
       <p>
-        Наш проект направлен на решение проблемы автоматизации обработки визуальных данных в медицинской сфере.
+        В современном здравоохранении значительная часть времени уходит на документацию.
+        Средний приём занимает около 12 минут, и до 70% этого времени может уходить на оформление записей.
+        Наша цель — вернуть это время врачу и пациенту.
       </p>
     </section>
 
     <section :class="$style.advantages">
-      <h2>Основные преимущества:</h2>
+      <h2>Проблемы, которые решаем</h2>
       <ul>
         <li>
-          <strong>Скорость обработки:</strong>
-          мгновенный анализ медицинских изображений
+          <strong>Меньше рутины:</strong>
+          снижение времени на оформление приёма.
         </li>
         <li>
-          <strong>Точность:</strong>
-          использование современных алгоритмов машинного обучения
+          <strong>Меньше ошибок:</strong>
+          структурированная запись уменьшает риск потерь и опечаток.
         </li>
         <li>
-          <strong>Масштабируемость:</strong>
-          возможность обработки больших объемов данных
+          <strong>Больше внимания пациенту:</strong>
+          врач больше времени тратит на диагностику и общение.
         </li>
         <li>
-          <strong>Поддержка врачей:</strong>
-          автоматизация рутинных задач
+          <strong>Аналитика:</strong>
+          накопление анонимных данных для улучшения качества.
         </li>
       </ul>
     </section>
 
-    <section :class="$style.conclusion">
-      <p>
-        Мы разрабатываем систему, которая помогает врачам быстрее и точнее анализировать медицинские изображения,
-        что ведет к более эффективной диагностике и лечению пациентов.
+    <section :class="$style.poll">
+      <h3>Опрос</h3>
+      <p>Актуальна ли для вас проблема объёма документации на приёме?</p>
+      <div
+        :class="$style.pollBtns"
+        role="group"
+        aria-label="Опрос"
+      >
+        <button type="button">
+          Да
+        </button>
+        <button type="button">
+          Нет
+        </button>
+      </div>
+      <p :class="$style.hint">
+        (Кнопки статичные — можно подключить API по желанию)
       </p>
     </section>
   </section>
@@ -48,76 +64,70 @@
 
 <style module lang="scss">
 .section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 2rem 0;
-  gap: 2rem;
-
-  h1 {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 1rem;
-  }
-
-  h2 {
-    font-size: 1.8rem;
-    color: #444;
-    margin-bottom: 1rem;
-  }
-
-  section {
-    margin: 1.5rem 0;
-  }
-
-  p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #666;
-    max-width: 800px;
-  }
+  padding: 2rem;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(20, 30, 50, 0.04);
 }
-
-.intro {
-  font-size: 1.2rem;
-  margin: 2rem 0;
+h1 {
+  font-size: 1.9rem;
+  margin-bottom: 0.6rem;
+  color: #111827;
+}
+.intro p {
+  color: #374151;
+  line-height: 1.6;
+  font-size: 1.03rem;
 }
 
 .advantages {
+  margin-top: 1rem;
+  h2 {
+    font-size: 1.2rem;
+    color: #0f172a;
+    margin-bottom: 0.6rem;
+  }
   ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.8rem;
     li {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #666;
-      padding: 1.5rem;
-      background: #f8f8f8;
+      padding: 0.9rem;
+      background: #f8fafc;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-
       strong {
         display: block;
-        color: #333;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
+        color: #0f172a;
       }
+      color: #4b5563;
     }
   }
 }
 
-.conclusion {
-  margin-top: 2rem;
-  padding: 2rem;
-  background: #f5f5f5;
-  border-radius: 8px;
-
-  p {
-    margin: 0;
+.poll {
+  margin-top: 1.2rem;
+  .pollBtns {
+    display: flex;
+    gap: 0.6rem;
+    button {
+      padding: 0.55rem 0.9rem;
+      border-radius: 8px;
+      border: 1px solid #e6eef8;
+      background: white;
+      cursor: pointer;
+      transition: transform 0.12s ease;
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+  }
+  .hint {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
   }
 }
 </style>
