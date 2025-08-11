@@ -11,12 +11,6 @@ importers:
       '@vueuse/core':
         specifier: ^13.1.0
         version: 13.1.0(vue@3.5.13(typescript@5.7.3))
-      dompurify:
-        specifier: ^3.2.5
-        version: 3.2.5
-      marked:
-        specifier: ^15.0.11
-        version: 15.0.11
       motion-v:
         specifier: ^1.0.1
         version: 1.0.1(vue@3.5.13(typescript@5.7.3))
@@ -588,9 +582,6 @@ packages:
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
 
-  '@types/trusted-types@2.0.7':
-    resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
-
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
@@ -1002,9 +993,6 @@ packages:
 
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
-
-  dompurify@3.2.5:
-    resolution: {integrity: sha512-mLPd29uoRe9HpvwP2TxClGQBzGXeEC/we/q+bFlmPPmj2p2Ugl3r6ATu/UU1v77DXNcehiBg9zsr1dREyA/dJQ==}
 
   electron-to-chromium@1.5.149:
     resolution: {integrity: sha512-UyiO82eb9dVOx8YO3ajDf9jz2kKyt98DEITRdeLPstOEuTlLzDA4Gyq5K9he71TQziU5jUVu2OAu5N48HmQiyQ==}
@@ -1482,11 +1470,6 @@ packages:
 
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
-
-  marked@15.0.11:
-    resolution: {integrity: sha512-1BEXAU2euRCG3xwgLVT1y0xbJEld1XOrmRJpUwRCcy7rxhSCwMrmEu9LXoPhHSCJG41V7YcQ2mjKRr5BA3ITIA==}
-    engines: {node: '>= 18'}
-    hasBin: true
 
   mdast-util-find-and-replace@3.0.2:
     resolution: {integrity: sha512-Tmd1Vg/m3Xz43afeNxDIhWRtFZgM2VLyaf4vSTYwudTyeuTneoL3qtWMA5jeLyz/O1vDJmmV4QuScFCA2tBPwg==}
@@ -2696,9 +2679,6 @@ snapshots:
 
   '@types/normalize-package-data@2.4.4': {}
 
-  '@types/trusted-types@2.0.7':
-    optional: true
-
   '@types/unist@3.0.3': {}
 
   '@types/web-bluetooth@0.0.20': {}
@@ -3101,10 +3081,6 @@ snapshots:
   devlop@1.1.0:
     dependencies:
       dequal: 2.0.3
-
-  dompurify@3.2.5:
-    optionalDependencies:
-      '@types/trusted-types': 2.0.7
 
   electron-to-chromium@1.5.149: {}
 
@@ -3641,8 +3617,6 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.5.0
 
   markdown-table@3.0.4: {}
-
-  marked@15.0.11: {}
 
   mdast-util-find-and-replace@3.0.2:
     dependencies:

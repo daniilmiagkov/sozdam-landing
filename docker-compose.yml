@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  sozdam-site:
+    build: .
+    ports:
+      - '80:80'
+    restart: unless-stopped
