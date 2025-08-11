@@ -37,7 +37,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   /* background-color: #544e4eaf; */
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 #app {
@@ -51,8 +51,8 @@ body {
   :root {
     color: #213547;
   background-color: #ffffff;
-    /* background-color: #ffffff; */
-  
+    /* background-color: #ffffff;
+
   }
   body {
   background-color: #ffffff;
