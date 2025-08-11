@@ -33,12 +33,12 @@ watch(() => route.hash, (newHash) => {
 <style module lang="scss">
 .app {
   min-height: 100vh;
-  background: #fff;
+  width: 100%;
 }
 
 .main {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 100px 20px 40px;
+  padding: 40px 20px 40px;
 }
 </style>

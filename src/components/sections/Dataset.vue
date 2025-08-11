@@ -16,20 +16,7 @@
     <section :class="$style.sample">
       <h3>Фрагмент записи (JSON)</h3>
       <pre :class="$style.json">
-{
-  "id": "record_000123",
-  "audio_duration_s": 280,
-  "transcript": "Пациент жалуется на головную боль справа, началась два дня назад...",
-  "entities": {
-    "complaint": "головная боль справа",
-    "onset": "2 дня",
-    "severity": "умеренная"
-  },
-  "labels": {
-    "specialty": "терапия",
-    "consent_anonymized": true
-  }
-}
+СЮДА ВСТАВИТЬ КОД ИЗ ДАТАСЕТА (ПРИМЕР)
       </pre>
 
       <h3>Пример таблицы (выборка)</h3>
@@ -83,6 +70,7 @@ h1 {
     border-radius: 8px;
     overflow: auto;
     font-size: 0.92rem;
+    text-align: left;
   }
   .table {
     width: 100%;

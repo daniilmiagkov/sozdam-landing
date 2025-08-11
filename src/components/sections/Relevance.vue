@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// пустой setup — логика в HomeSections (если понадобится)
 </script>
 
 <template>
@@ -8,7 +7,7 @@
     data-section="relevance"
     :class="$style.section"
   >
-    <h1>Зачем? (Актуальность)</h1>
+    <h1>Актуальность</h1>
 
     <section :class="$style.intro">
       <p>
@@ -39,26 +38,6 @@
         </li>
       </ul>
     </section>
-
-    <section :class="$style.poll">
-      <h3>Опрос</h3>
-      <p>Актуальна ли для вас проблема объёма документации на приёме?</p>
-      <div
-        :class="$style.pollBtns"
-        role="group"
-        aria-label="Опрос"
-      >
-        <button type="button">
-          Да
-        </button>
-        <button type="button">
-          Нет
-        </button>
-      </div>
-      <p :class="$style.hint">
-        (Кнопки статичные — можно подключить API по желанию)
-      </p>
-    </section>
   </section>
 </template>
 
@@ -69,6 +48,7 @@
   background: #fff;
   box-shadow: 0 6px 18px rgba(20, 30, 50, 0.04);
 }
+
 h1 {
   font-size: 1.9rem;
   margin-bottom: 0.6rem;
@@ -104,30 +84,6 @@ h1 {
       }
       color: #4b5563;
     }
-  }
-}
-
-.poll {
-  margin-top: 1.2rem;
-  .pollBtns {
-    display: flex;
-    gap: 0.6rem;
-    button {
-      padding: 0.55rem 0.9rem;
-      border-radius: 8px;
-      border: 1px solid #e6eef8;
-      background: white;
-      cursor: pointer;
-      transition: transform 0.12s ease;
-      &:hover {
-        transform: translateY(-2px);
-      }
-    }
-  }
-  .hint {
-    color: #6b7280;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
   }
 }
 </style>
