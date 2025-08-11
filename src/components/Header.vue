@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const items = [
-  { text: 'Зачем?', link: 'relevance' },
+  { text: 'Актуальность', link: 'relevance' },
   { text: 'Архитектура', link: 'architecture' },
   { text: 'Датасет', link: 'dataset' },
   { text: 'О нас', link: 'team' },
@@ -44,11 +44,9 @@ const activeLink = computed(() => {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
+  background: #ffffff;
   z-index: 100;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav {

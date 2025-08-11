@@ -4,32 +4,36 @@ interface TeamMember {
   role: string
   description: string
   photo: string
-  links: {
-    github: string
-    telegram: string
-  }
 }
 
 const team: TeamMember[] = [
   {
-    name: 'Даниил Мягков',
-    role: 'Руководитель проекта',
-    description: 'Специалист в области машинного обучения и компьютерного зрения',
-    photo: '/about_miagkov.jpg',
-    links: {
-      github: 'https://github.com/daniilmiagkov',
-      telegram: 'https://t.me/daniilmiagkov',
-    },
+    name: 'Лисовский Матвей Андреевич',
+    role: 'Лидер команды / Разработчик',
+    description: `Студент 5 курса НМИЦ им. В.А. Алмазова и НЯУ МИФИ. 
+Лауреат Именной стипендии Правительства. Основатель «СОЗДАМ», организатор работы команды, 
+ответственный за взаимодействие с медучреждениями и ВУЗами, подбор информации для обучающих моделей. 
+Участник СНО по химии, соавтор научной работы. Разработчик модулей программы, ведущий специалист по подготовке данных. Ведет каналы проекта в Telegram и ВКонтакте.`,
+    photo: '/about_lisovskiy.jpg',
   },
   {
-    name: 'Павел Чуйкин',
-    role: 'Разработчик',
-    description: 'Эксперт в области глубокого обучения и нейронных сетей',
+    name: 'Мягков Даниил Львович',
+    role: 'Руководитель проекта / Фронтенд-разработчик',
+    description: `Студент 4 курса СПБГУАП, фронтенд-разработчик в ООО «ХайРус». 
+Технический руководитель разработки основной программы: отвечает за архитектуру, 
+интеграцию модулей и финальную сборку системы. Также курирует финансовую часть 
+проекта и разработку сайта.`,
+    photo: '/about_miagkov.jpg',
+  },
+  {
+    name: 'Новосельский Павел Александрович',
+    role: 'Разработчик NLP/ASR систем',
+    description: `Студент Псковского политехнического колледжа. 
+Победитель конкурса «Лучший системный администратор» 2023. 
+Ведущий разработчик ключевых модулей системы: создал модуль автоматического распознавания речи (ASR) 
+и модуль обучения нейросетей для обработки естественного языка (NLP). Отвечает за подготовку обучающих 
+корпусов, архитектуру моделей и их интеграцию в продукт. Также ведет коммуникацию проекта.`,
     photo: '/about_pasha.jpg',
-    links: {
-      github: 'https://github.com/pasha',
-      telegram: 'https://t.me/pasha',
-    },
   },
 ]
 </script>
@@ -57,30 +61,11 @@ const team: TeamMember[] = [
           <h2>{{ member.name }}</h2>
           <h3>{{ member.role }}</h3>
           <p>{{ member.description }}</p>
-
-          <div :class="$style.links">
-            <a
-              :href="member.links.github"
-              target="_blank"
-              rel="noopener"
-              :class="$style.link"
-            >
-              GitHub
-            </a>
-            <a
-              :href="member.links.telegram"
-              target="_blank"
-              rel="noopener"
-              :class="$style.link"
-            >
-              Telegram
-            </a>
-          </div>
         </div>
       </div>
     </div>
 
-    <div :class="$style.principles">
+    <!-- <div :class="$style.principles">
       <h2>Наши принципы</h2>
       <div :class="$style.principlesGrid">
         <div :class="$style.principle">
@@ -100,7 +85,7 @@ const team: TeamMember[] = [
           <p>Постоянное улучшение системы</p>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -108,13 +93,6 @@ const team: TeamMember[] = [
 .section {
   min-height: 100vh;
   padding: 2rem 0;
-
-  h1 {
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 3rem;
-    text-align: center;
-  }
 
   h2 {
     font-size: 1.8rem;
@@ -125,10 +103,10 @@ const team: TeamMember[] = [
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: 40px auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 3rem;
   padding: 0 1rem;
 }
@@ -149,15 +127,16 @@ const team: TeamMember[] = [
   width: 100%;
   height: 300px;
   object-fit: cover;
+  object-position: center 20%;
 }
 
 .info {
   padding: 1.5rem;
-  text-align: center;
 
   h2 {
     font-size: 1.4rem;
     margin: 0 0 0.5rem;
+    text-align: center;
   }
 
   h3 {
@@ -170,27 +149,7 @@ const team: TeamMember[] = [
     color: #666;
     line-height: 1.5;
     margin-bottom: 1.5rem;
-  }
-}
-
-.links {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.link {
-  padding: 0.5rem 1rem;
-  color: #333;
-  text-decoration: none;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  transition: all 0.2s;
-
-  &:hover {
-    background: #333;
-    color: #fff;
-    border-color: #333;
+    text-align: justify;
   }
 }
 

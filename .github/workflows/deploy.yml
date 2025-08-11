@@ -3,7 +3,7 @@ name: Deploy Vue app to GitHub Pages
 on:
   push:
     branches:
-      - main  # или твоя основная ветка
+      - main # или твоя основная ветка
 
 jobs:
   build-and-deploy:
