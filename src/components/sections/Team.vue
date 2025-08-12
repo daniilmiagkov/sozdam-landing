@@ -119,10 +119,11 @@ const team: TeamMember[] = [
   padding: 0;
 
   @media (max-width: 900px) {
+    gap: var(--space-xl);
+
     grid-template-columns: repeat(2, 1fr);
   }
   @media (max-width: 640px) {
-    gap: var(--space-xl);
     grid-template-columns: repeat(1, 1fr);
     padding: 0 var(--space-xl);
   }
@@ -132,7 +133,6 @@ const team: TeamMember[] = [
 }
 
 .member {
-  background: var(--color-surface);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
