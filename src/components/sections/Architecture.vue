@@ -136,7 +136,7 @@ const modules = [
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-sm);
 }
 
 .step {
