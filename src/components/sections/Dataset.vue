@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// пустой setup
 </script>
 
 <template>
@@ -42,37 +41,58 @@
 
 <style module lang="scss">
 .section {
-  padding: 2rem;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 6px 18px rgba(20, 30, 50, 0.04);
+  min-height: 100vh;
+  padding: var(--section-padding);
+  padding-top: calc(var(--header-height) + var(--section-padding));
+
+  h1 {
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+  }
+
+  h3 {
+    font-size: var(--font-size-lg);
+    color: var(--color-secondary);
+    margin-bottom: var(--space-md);
+  }
 }
 
 .lead {
-  color: #475569;
-  margin-bottom: 1rem;
+  max-width: min(800px, 95%);
+  margin: 0 auto var(--space-xl);
+  color: var(--color-secondary);
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  text-align: center;
 }
 
 .sample {
+  max-width: min(1000px, 95%);
+  margin: 0 auto;
+
   .json {
-    background: #0f172a;
-    color: #e6eef8;
-    padding: 1rem;
-    border-radius: 8px;
+    background: var(--color-primary);
+    color: var(--color-surface);
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
     overflow: auto;
-    font-size: 0.92rem;
+    font-size: var(--font-size-sm);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    line-height: 1.6;
     text-align: left;
     white-space: pre-wrap;
+    box-shadow: var(--shadow-md);
+    margin: var(--space-md) 0;
   }
-  .hint {
-    margin-top: 0.6rem;
-    color: #6b7280;
-  }
-}
 
-@media (max-width: 720px) {
-  .section {
-    padding: 1rem;
+  .hint {
+    margin-top: var(--space-md);
+    color: var(--color-secondary);
+    font-size: var(--font-size-sm);
+    text-align: center;
+    font-style: italic;
   }
 }
 </style>

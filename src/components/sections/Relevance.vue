@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// пустой setup
 </script>
 
 <template>
@@ -88,63 +87,88 @@
 
 <style module lang="scss">
 .section {
-  padding: 2rem;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 6px 18px rgba(20, 30, 50, 0.04);
+  min-height: 100vh;
+  padding: var(--section-padding);
+  padding-top: calc(var(--header-height) + var(--section-padding));
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-xl);
+
+  h1 {
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+  }
+
+  h2 {
+    font-size: var(--font-size-xl);
+    color: var(--color-secondary);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+  }
 }
 
-.intro p {
-  color: #374151;
-  line-height: 1.6;
-  font-size: 1.03rem;
-  margin: 0;
-  text-align: justify;
+.intro {
+  max-width: min(800px, 95%);
+  margin: 0 auto;
+
+  p {
+    color: var(--color-secondary);
+    line-height: 1.6;
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-md);
+    text-align: justify;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .impact {
-  margin-top: 0.6rem;
-
-  h2 {
-    margin: 0 0 0.8rem 0;
-    color: #0f172a;
-  }
+  max-width: min(1200px, 95%);
+  margin: 0 auto;
 
   .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: var(--space-md);
+    padding: var(--space-sm);
+
+    @media (max-width: 768px) {
+      gap: var(--space-sm);
+    }
   }
 
   .card {
-    background: #f8fafc;
-    border-radius: 10px;
-    padding: 1rem;
-    min-height: 110px;
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    min-height: 180px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-  }
-  .cardHeader {
-    font-weight: 600;
-    color: #0b3b4a;
-    margin-bottom: 0.5rem;
-    font-size: 1.03rem;
-  }
-  .desc {
-    margin: 0;
-    color: #475569;
-    line-height: 1.45;
-    font-size: 0.98rem;
-  }
-}
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal);
 
-@media (max-width: 720px) {
-  .section {
-    padding: 1rem;
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  .cardHeader {
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .desc {
+    font-size: var(--font-size-base);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin: 0;
   }
 }
 </style>

@@ -11,7 +11,6 @@ import TeamSection from './components/sections/Team.vue'
 const route = useRoute()
 const currentSection = ref(route.hash.replace('#', '') || 'relevance')
 
-// Следим за изменением хэша в URL
 watch(() => route.hash, (newHash) => {
   currentSection.value = newHash.replace('#', '') || 'relevance'
 })

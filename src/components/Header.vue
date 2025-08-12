@@ -44,50 +44,65 @@ const activeLink = computed(() => {
   top: 0;
   left: 0;
   right: 0;
-  background: #ffffff;
-  z-index: 100;
-  padding: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: var(--z-header);
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--container-padding);
+  box-shadow: var(--shadow-sm);
 }
 
 .nav {
-  max-width: 1200px;
+  width: min(1200px, 100%);
   margin: 0 auto;
 }
 
 .list {
-  list-style: none;
   display: flex;
-  gap: 2rem;
   justify-content: center;
+  gap: var(--space-lg);
   margin: 0;
   padding: 0;
+  list-style: none;
+
+  @media (max-width: 640px) {
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
 }
 
 .item {
   position: relative;
 
-  &.active {
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: currentColor;
-    }
+  &.active::after {
+    content: '';
+    position: absolute;
+    bottom: calc(-1 * var(--space-xs));
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-accent);
+    transition: opacity var(--transition-fast);
   }
 }
 
 .link {
-  color: inherit;
-  text-decoration: none;
+  display: block;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-sm);
   font-weight: 500;
-  transition: color 0.2s;
-  color: #525252;
+  color: var(--color-secondary);
+  transition: color var(--transition-fast);
+  white-space: nowrap;
 
   &:hover {
-    color: #666;
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 640px) {
+    padding: 0.375rem;
   }
 }
 </style>
