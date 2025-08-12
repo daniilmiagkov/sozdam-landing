@@ -91,9 +91,6 @@
   min-height: 100vh;
   padding: var(--section-padding);
   padding-top: calc(var(--header-height) + var(--section-padding));
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
 
   h1 {
     font-size: var(--font-size-2xl);
@@ -112,12 +109,12 @@
 
 .intro {
   max-width: min(800px, 95%);
-  margin: 0 auto;
+  margin: 0 auto var(--space-xl);
 
   p {
     color: var(--color-secondary);
     line-height: 1.6;
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-lg);
     margin-bottom: var(--space-md);
     text-align: justify;
 
