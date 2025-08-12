@@ -133,10 +133,6 @@
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: var(--space-md);
     padding: var(--space-sm);
-
-    @media (max-width: 768px) {
-      gap: var(--space-sm);
-    }
   }
 
   .card {
@@ -148,11 +144,6 @@
     flex-direction: column;
     box-shadow: var(--shadow-sm);
     transition: transform var(--transition-normal);
-
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
   }
 
   .cardHeader {
