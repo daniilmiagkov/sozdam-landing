@@ -47,7 +47,6 @@ const activeLink = computed(() => {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   z-index: var(--z-header);
-  height: var(--header-height);
   display: flex;
   align-items: center;
   padding: 0 var(--container-padding);
@@ -64,7 +63,7 @@ const activeLink = computed(() => {
   justify-content: center;
   gap: var(--space-lg);
   margin: 0;
-  padding: 0;
+  padding: 10px;
   list-style: none;
 
   @media (max-width: 640px) {
