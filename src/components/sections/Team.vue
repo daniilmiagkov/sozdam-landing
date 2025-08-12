@@ -92,35 +92,50 @@ const team: TeamMember[] = [
 <style module lang="scss">
 .section {
   min-height: 100vh;
-  padding: 2rem 0;
+  padding: var(--section-padding);
+  padding-top: calc(var(--header-height) + var(--section-padding));
+
+  h1 {
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+    margin-bottom: var(--space-xl);
+    text-align: center;
+  }
 
   h2 {
-    font-size: 1.8rem;
-    color: #444;
-    margin-bottom: 2rem;
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
     text-align: center;
   }
 }
 
 .container {
-  max-width: 900px;
-  margin: 40px auto;
+  max-width: 1000px;
+  margin: var(--space-xl) auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 3rem;
-  padding: 0 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  padding: 0;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 640px) {
+    gap: var(--space-xl);
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 var(--space-xl);
+  }
+  @media (max-width: 450px) {
+    padding: 0;
+  }
 }
 
 .member {
-  background: #fff;
-  border-radius: 16px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s;
-
-  &:hover {
-    transform: translateY(-5px);
-  }
+  box-shadow: var(--shadow-md);
 }
 
 .photo {
@@ -131,55 +146,66 @@ const team: TeamMember[] = [
 }
 
 .info {
-  padding: 1.5rem;
+  padding: var(--space-md);
 
   h2 {
-    font-size: 1.4rem;
-    margin: 0 0 0.5rem;
+    font-size: var(--font-size-lg);
+    margin: 0 0 var(--space-xs);
     text-align: center;
+    color: var(--color-primary);
   }
 
   h3 {
-    font-size: 1.1rem;
-    color: #666;
-    margin-bottom: 1rem;
+    font-size: var(--font-size-base);
+    color: var(--color-secondary);
+    margin-bottom: var(--space-md);
+    text-align: center;
   }
 
   p {
-    color: #666;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
+    font-size: var(--font-size-base);
+    color: var(--color-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
     text-align: justify;
   }
 }
 
 .principles {
-  max-width: 1200px;
-  margin: 4rem auto 0;
-  padding: 0 1rem;
+  max-width: min(1200px, 95%);
+  margin: var(--space-xl) auto 0;
+  padding: 0 var(--container-padding);
 }
 
 .principlesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: var(--space-lg);
 }
 
 .principle {
-  padding: 1.5rem;
-  background: #f8f9fa;
-  border-radius: 8px;
+  padding: var(--space-lg);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
   text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
 
   h3 {
-    font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 0.5rem;
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
   }
 
   p {
-    color: #666;
-    line-height: 1.5;
+    font-size: var(--font-size-base);
+    color: var(--color-secondary);
+    line-height: 1.6;
   }
 }
 </style>

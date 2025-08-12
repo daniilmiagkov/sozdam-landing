@@ -110,31 +110,89 @@ const modules = [
 
 <style module lang="scss">
 .section {
-  padding: 2rem;
+  min-height: 100vh;
+  padding: var(--section-padding);
+  padding-top: calc(var(--header-height) + var(--section-padding));
+
+  h1 {
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+  }
 }
+
 .lead {
-  color: #475569;
-  margin-bottom: 1.5rem;
+  max-width: min(800px, 95%);
+  margin: 0 auto var(--space-xl);
+  color: var(--color-secondary);
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  text-align: center;
 }
+
 .flow {
+  max-width: min(1000px, 95%);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  gap: var(--space-xl);
 }
+
 .step {
   display: flex;
   align-items: flex-start;
+  gap: var(--space-lg);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-md);
+  }
 }
+
 .left {
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: var(--space-sm);
+
+  svg {
+    transition: transform var(--transition-normal);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    rect {
+      fill: var(--color-surface);
+      stroke: var(--color-border);
+      transition: all var(--transition-normal);
+    }
+
+    text {
+      fill: var(--color-primary);
+      font-weight: 500;
+    }
+
+    &:hover rect {
+      fill: var(--color-background);
+      stroke: var(--color-accent);
+    }
+  }
 }
+
 .right {
   flex: 1;
-  padding-left: 1rem;
-  color: #374151;
-  line-height: 1.4;
+  font-size: var(--font-size-base);
+  color: var(--color-secondary);
+  line-height: 1.6;
   text-align: justify;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 }
 </style>
