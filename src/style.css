@@ -24,7 +24,7 @@
 
   /* Layout */
   --container-padding: clamp(1rem, 5vw, 2rem);
-  --section-padding: clamp(1rem, 8vh, 2rem);
+  --section-padding: clamp(0.5rem, 5vh, 1rem);
   --header-height: clamp(3rem, 10vh, 4rem);
 
   /* Border Radius */
