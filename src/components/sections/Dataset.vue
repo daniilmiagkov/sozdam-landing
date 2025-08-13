@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// пустой setup
 </script>
 
 <template>
@@ -73,8 +74,8 @@
   margin: 0 auto;
 
   .json {
-    background: var(--color-primary);
-    color: var(--color-surface);
+    background: #0f172a;
+    color: #e6eef8;
     padding: var(--space-lg);
     border-radius: var(--radius-md);
     overflow: auto;

@@ -18,7 +18,7 @@ const team: TeamMember[] = [
   },
   {
     name: 'Мягков Даниил Львович',
-    role: 'Руководитель проекта / Фронтенд-разработчик',
+    role: 'Руководитель разработки / Фронтенд-разработчик',
     description: `Студент 4 курса СПБГУАП, фронтенд-разработчик в ООО «ХайРус». 
 Технический руководитель разработки основной программы: отвечает за архитектуру, 
 интеграцию модулей и финальную сборку системы. Также курирует финансовую часть 
@@ -119,10 +119,11 @@ const team: TeamMember[] = [
   padding: 0;
 
   @media (max-width: 900px) {
+    gap: var(--space-xl);
+
     grid-template-columns: repeat(2, 1fr);
   }
   @media (max-width: 640px) {
-    gap: var(--space-xl);
     grid-template-columns: repeat(1, 1fr);
     padding: 0 var(--space-xl);
   }
@@ -132,7 +133,6 @@ const team: TeamMember[] = [
 }
 
 .member {
-  background: var(--color-surface);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);

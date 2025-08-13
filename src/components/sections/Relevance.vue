@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// пустой setup
 </script>
 
 <template>
@@ -90,9 +91,6 @@
   min-height: 100vh;
   padding: var(--section-padding);
   padding-top: calc(var(--header-height) + var(--section-padding));
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
 
   h1 {
     font-size: var(--font-size-2xl);
@@ -111,12 +109,12 @@
 
 .intro {
   max-width: min(800px, 95%);
-  margin: 0 auto;
+  margin: 0 auto var(--space-xl);
 
   p {
     color: var(--color-secondary);
     line-height: 1.6;
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-lg);
     margin-bottom: var(--space-md);
     text-align: justify;
 
@@ -135,10 +133,6 @@
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: var(--space-md);
     padding: var(--space-sm);
-
-    @media (max-width: 768px) {
-      gap: var(--space-sm);
-    }
   }
 
   .card {
@@ -150,11 +144,6 @@
     flex-direction: column;
     box-shadow: var(--shadow-sm);
     transition: transform var(--transition-normal);
-
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
   }
 
   .cardHeader {
