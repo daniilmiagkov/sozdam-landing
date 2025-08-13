@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import Header from './components/Header.vue'
 import ArchitectureSection from './components/sections/Architecture.vue'
 import DatasetSection from './components/sections/Dataset.vue'
@@ -9,10 +9,31 @@ import RelevanceSection from './components/sections/Relevance.vue'
 import TeamSection from './components/sections/Team.vue'
 
 const route = useRoute()
-const currentSection = ref(route.hash.replace('#', '') || 'relevance')
+const router = useRouter()
+
+const sections = ['relevance', 'architecture', 'dataset', 'team', 'demo']
+
+const currentSection = ref('relevance')
+
+// Функция установки секции и корректного хэша
+function updateSection(hash: string) {
+  const cleanHash = hash.replace('#', '')
+  if (sections.includes(cleanHash)) {
+    currentSection.value = cleanHash
+  }
+  else {
+    currentSection.value = 'relevance'
+    // обновляем URL без перезагрузки страницы
+    router.replace({ path: route.path, hash: '#relevance' })
+  }
+}
 
 watch(() => route.hash, (newHash) => {
-  currentSection.value = newHash.replace('#', '') || 'relevance'
+  updateSection(newHash)
+})
+
+onMounted(() => {
+  updateSection(route.hash)
 })
 </script>
 
