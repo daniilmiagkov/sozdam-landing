@@ -140,15 +140,63 @@ const modules = [
 }
 
 .step {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: 'left right';
+  align-items: start;
   gap: var(--space-lg);
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'right'
+      'left';
     gap: var(--space-md);
+    text-align: center;
+  }
+}
+
+.left {
+  grid-area: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+
+  svg {
+    transition: transform var(--transition-normal);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    rect {
+      fill: var(--color-surface);
+      stroke: var(--color-border);
+      transition: all var(--transition-normal);
+    }
+
+    text {
+      fill: var(--color-primary);
+      font-weight: 500;
+    }
+
+    &:hover rect {
+      fill: var(--color-background);
+      stroke: var(--color-accent);
+    }
+  }
+}
+
+.right {
+  grid-area: right;
+  font-size: var(--font-size-base);
+  color: var(--color-secondary);
+  line-height: 1.6;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    text-align: center;
   }
 }
 
@@ -181,18 +229,6 @@ const modules = [
       fill: var(--color-background);
       stroke: var(--color-accent);
     }
-  }
-}
-
-.right {
-  flex: 1;
-  font-size: var(--font-size-base);
-  color: var(--color-secondary);
-  line-height: 1.6;
-  text-align: justify;
-
-  @media (max-width: 768px) {
-    text-align: center;
   }
 }
 </style>
