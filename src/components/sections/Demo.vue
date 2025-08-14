@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// Пустой setup
 </script>
 
 <template>
@@ -9,13 +8,13 @@
   >
     <h1>Демо</h1>
 
-    <!-- <video
-      src="/demo.mp4"
+    <video
+      src="/2025-08-14 11-42-33.mp4"
       controls
       :class="$style.demoVideo"
     >
       Ваш браузер не поддерживает видео HTML5.
-    </video> -->
+    </video>
   </section>
 </template>
 
@@ -28,9 +27,7 @@
   padding: var(--section-padding);
   padding-top: calc(var(--header-height) + var(--section-padding));
 
-  @media (max-width: 768px) {
-    text-align: center;
-  }
+  text-align: center;
 
   h1 {
     font-size: var(--font-size-2xl);
@@ -56,11 +53,6 @@
   aspect-ratio: 16/9;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
-  transition: transform var(--transition-normal);
-
-  &:hover {
-    transform: scale(1.02);
-  }
 }
 
 .features {
@@ -81,11 +73,6 @@
       border-radius: var(--radius-sm);
       transition: transform var(--transition-fast);
       box-shadow: var(--shadow-sm);
-
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-      }
     }
   }
 }
