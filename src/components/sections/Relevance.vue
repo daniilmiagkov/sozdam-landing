@@ -144,6 +144,7 @@
     flex-direction: column;
     box-shadow: var(--shadow-sm);
     transition: transform var(--transition-normal);
+    text-align: center;
   }
 
   .cardHeader {
