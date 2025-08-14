@@ -19,7 +19,7 @@ const router = createRouter({
 })
 
 // Всегда устанавливаем #relevance, если хэш пустой
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _, next) => {
   if (!to.hash) {
     next({ path: to.path, hash: '#relevance' })
   }
