@@ -21,6 +21,7 @@
   --space-md: clamp(1rem, 2vw, 1.5rem);
   --space-lg: clamp(1.5rem, 3vw, 2rem);
   --space-xl: clamp(2rem, 4vw, 3rem);
+  --space-2xl: clamp(3rem, 4vw, 5rem);
 
   /* Layout */
   --container-padding: clamp(1rem, 5vw, 2rem);
@@ -65,6 +66,13 @@
   -moz-osx-font-smoothing: grayscale;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+}
+
+/* Для экранов меньше 640px */
+@media (max-width: 640px) {
+  :root {
+    --header-height: 3rem; /* любое другое значение */
+  }
 }
 
 /* Base styles */
