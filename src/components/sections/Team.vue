@@ -117,13 +117,13 @@ const projectQR = [
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: var(--space-xl) auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
+  gap: var(--space-xl);
 
-  @media (max-width: 900px) {
+  @media (max-width: 960px) {
     grid-template-columns: repeat(2, 1fr);
     padding: 0 var(--space-md);
   }
