@@ -10,28 +10,33 @@ const team: TeamMember[] = [
   {
     name: 'Лисовский Матвей Андреевич',
     role: 'Лидер команды / Разработчик',
-    description: `Студент 5 курса НМИЦ им. В.А. Алмазова и НЯУ МИФИ. Лауреат Именной стипендии Правительства. Основатель «СОЗДАМ», организатор работы команды, 
-ответственный за взаимодействие с медучреждениями и ВУЗами, подбор информации для обучающих моделей. 
-Участник СНО по химии, соавтор научной работы. Разработчик модулей программы, ведущий специалист по подготовке данных. Ведет каналы проекта в Telegram и ВКонтакте.`,
+    description: `Студент 5 курса НМИЦ им. В.А. Алмазова и НЯУ МИФИ. Лауреат Именной стипендии Правительства. 
+    Основатель «СОЗДАМ», организатор работы команды, ответственный за взаимодействие с медучреждениями и ВУЗами, 
+    подбор информации для обучающих моделей. Участник СНО по химии, соавтор научной работы. Разработчик модулей программы, 
+    ведущий специалист по подготовке данных. Ведет каналы проекта в Telegram и ВКонтакте.`,
     photo: '/about_lisovskiy.jpg',
   },
   {
     name: 'Мягков Даниил Львович',
     role: 'Руководитель разработки / Фронтенд-разработчик',
     description: `Бакалавр информационных систем и технологий СПБГУАП, фронтенд-разработчик в ООО «ХайРус». 
-Технический руководитель разработки основной программы: отвечает за архитектуру, 
-интеграцию модулей и финальную сборку системы. Также курирует финансовую часть 
-проекта и разработку сайта.`,
+    Технический руководитель разработки основной программы: отвечает за архитектуру, интеграцию модулей и финальную сборку системы. 
+    Также курирует финансовую часть проекта и разработку сайта.`,
     photo: '/about_miagkov.jpg',
   },
   {
     name: 'Новосельский Павел Александрович',
     role: 'Разработчик NLP/ASR систем',
     description: `Студент ПСКОВГУ. Ведущий разработчик ключевых модулей системы: занимается разработкой модуля автоматического распознавания речи (ASR) 
-и модуля обучения нейросетей для обработки естественного языка (NLP). Отвечает за подготовку обучающих 
-корпусов, архитектуру моделей и их интеграцию в продукт. Также ведет коммуникацию проекта.`,
+    и модуля обучения нейросетей для обработки естественного языка (NLP). Отвечает за подготовку обучающих корпусов, архитектуру моделей и их интеграцию в продукт. 
+    Также ведет коммуникацию проекта.`,
     photo: '/about_pasha.jpg',
   },
+]
+
+const projectQR = [
+  { name: 't.me/sozzdam', img: '/qr/Телеграмм_qr.png', link: 'https://t.me/sozzdam' },
+  { name: 'vk.com/sozzdam', img: '/qr/ВК_qr.png', link: 'https://vk.com/sozzdam' },
 ]
 </script>
 
@@ -62,27 +67,25 @@ const team: TeamMember[] = [
       </div>
     </div>
 
-    <!-- <div :class="$style.principles">
-      <h2>Наши принципы</h2>
-      <div :class="$style.principlesGrid">
-        <div :class="$style.principle">
-          <h3>Инновационность</h3>
-          <p>Использование передовых технологий</p>
-        </div>
-        <div :class="$style.principle">
-          <h3>Качество</h3>
-          <p>Тщательное тестирование и валидация</p>
-        </div>
-        <div :class="$style.principle">
-          <h3>Открытость</h3>
-          <p>Готовность к сотрудничеству</p>
-        </div>
-        <div :class="$style.principle">
-          <h3>Развитие</h3>
-          <p>Постоянное улучшение системы</p>
-        </div>
+    <div :class="$style.qrSection">
+      <h1>Мы в соцсетях</h1>
+      <div :class="$style.qrLinks">
+        <a
+          v-for="qr in projectQR"
+          :key="qr.name"
+          :href="qr.link"
+          target="_blank"
+          :class="$style.qrItem"
+        >
+          <img
+            :src="qr.img"
+            :alt="`QR ${qr.name}`"
+            :class="$style.qr"
+          >
+          <span>{{ qr.name }}</span>
+        </a>
       </div>
-    </div> -->
+    </div>
   </section>
 </template>
 
@@ -99,6 +102,12 @@ const team: TeamMember[] = [
     text-align: center;
   }
 
+  @media (max-width: 455px) {
+    h1 {
+      margin: var(--space-xs);
+    }
+  }
+
   h2 {
     font-size: var(--font-size-lg);
     color: var(--color-primary);
@@ -113,19 +122,17 @@ const team: TeamMember[] = [
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
-  padding: 0;
 
   @media (max-width: 900px) {
-    gap: var(--space-xl);
-
     grid-template-columns: repeat(2, 1fr);
+    padding: 0 var(--space-md);
   }
   @media (max-width: 640px) {
     grid-template-columns: repeat(1, 1fr);
-    padding: 0 var(--space-xl);
+    margin: var(--space-md) auto;
   }
-  @media (max-width: 450px) {
-    padding: 0;
+  @media (max-width: 400px) {
+    padding: 0 var(--space-xs);
   }
 }
 
@@ -163,46 +170,45 @@ const team: TeamMember[] = [
     font-size: var(--font-size-base);
     color: var(--color-secondary);
     line-height: 1.6;
-    margin-bottom: var(--space-md);
     text-align: justify;
   }
 }
 
-.principles {
-  max-width: min(1200px, 95%);
-  margin: var(--space-xl) auto 0;
-  padding: 0 var(--container-padding);
-}
-
-.principlesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
-  gap: var(--space-lg);
-}
-
-.principle {
-  padding: var(--space-lg);
-  background: var(--color-surface);
-  border-radius: var(--radius-md);
+/* QR-коды */
+.qrSection {
   text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-normal);
+}
 
-  &:hover {
-    transform: translateY(-4px);
+.qrLinks {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2xl);
+  flex-wrap: wrap;
+  margin: var(--space-xl);
+}
+
+.qrItem {
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+
+  &:hover img {
+    transform: scale(1.05);
     box-shadow: var(--shadow-md);
   }
+}
 
-  h3 {
-    font-size: var(--font-size-lg);
-    color: var(--color-primary);
-    margin-bottom: var(--space-sm);
-  }
-
-  p {
-    font-size: var(--font-size-base);
-    color: var(--color-secondary);
-    line-height: 1.6;
-  }
+.qr {
+  width: 200px;
+  height: 200px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-xs);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 </style>
