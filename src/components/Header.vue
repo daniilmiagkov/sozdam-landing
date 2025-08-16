@@ -96,7 +96,7 @@ const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value)
   border: none;
   padding: 0;
   cursor: pointer;
-
+  color: black;
   @media (max-width: 640px) {
     display: block;
   }
