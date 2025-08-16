@@ -132,7 +132,15 @@ const modules = [
   grid-template-areas: 'left right';
   align-items: start;
   gap: var(--space-lg);
-  transform: translateY(20px);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'right'
+      'left';
+    gap: var(--space-md);
+    text-align: center;
+  }
 }
 
 .flow {
