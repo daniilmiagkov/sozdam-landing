@@ -23,18 +23,28 @@ const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value)
     <nav :class="$style.nav">
       <!-- Бургер для мобилки -->
       <button
+        type="button"
         :class="$style.burger"
         aria-label="Меню"
+        :aria-expanded="isMenuOpen"
         @click="toggleMenu"
       >
-        <Menu
-          v-if="!isMenuOpen"
-          :size="24"
-        />
-        <X
-          v-else
-          :size="24"
-        />
+        <transition
+          name="icon-fade"
+          mode="out-in"
+        >
+          <!-- даём разный key чтобы transition сработал -->
+          <Menu
+            v-if="!isMenuOpen"
+            key="menu"
+            :size="24"
+          />
+          <X
+            v-else
+            key="close"
+            :size="24"
+          />
+        </transition>
       </button>
 
       <!-- Список меню -->
@@ -82,6 +92,8 @@ const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value)
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 0;
 }
 
 @media (min-width: 641px) {
@@ -100,12 +112,19 @@ const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value)
   @media (max-width: 640px) {
     display: block;
   }
+
+  position: relative;
+  z-index: 30;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .list {
   display: flex;
-  gap: var(--space-lg);
-  margin: 0;
+  gap: var(--space-md);
+  margin: -50px;
   padding: 10px;
   list-style: none;
 
@@ -119,9 +138,11 @@ const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value)
     align-items: center;
     gap: var(--space-md);
     padding: var(--space-md);
-    transform: translateY(-150%);
-    transition: transform 0.3s ease;
-    box-shadow: var(--shadow-md);
+    transform: translateY(-120%);
+    transition: transform 0.34s cubic-bezier(0.2, 0.9, 0.3, 1);
+
+    z-index: 10;
+    will-change: transform;
   }
 }
 
