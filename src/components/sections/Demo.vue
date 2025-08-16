@@ -1,17 +1,27 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useAutoStagger } from '../../composables/useAutoStagger'
+
+const root = ref<HTMLElement | null>(null)
+
+useAutoStagger(root, { selector: '.fadeInUp', base: 0.08, step: 0.16, observe: true, startOnView: false })
 </script>
 
 <template>
   <section
     id="demo"
+    ref="root"
     :class="$style.section"
   >
-    <h1>Демо</h1>
+    <h1 class="fadeInUp">
+      Демо
+    </h1>
 
     <video
       src="/2025-08-14 11-42-33.mp4"
       controls
       :class="$style.demoVideo"
+      class="fadeInUp"
     >
       Ваш браузер не поддерживает видео HTML5.
     </video>
