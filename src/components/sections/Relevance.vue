@@ -18,7 +18,10 @@ useAutoStagger(root, { selector: '.fadeInUp', base: 0.08, step: 0.16, observe: t
       Актуальность
     </h1>
 
-    <section :class="$style.intro">
+    <section
+      :class="$style.intro"
+      lang="ru"
+    >
       <p class="fadeInUp">
         Современная медицина работает в условиях высокой плотности приёмов и возросших требований к отчётности.
         Средний амбулаторный приём занимает около 12 минут, при этом на оформление документации по разным оценкам
@@ -131,10 +134,17 @@ useAutoStagger(root, { selector: '.fadeInUp', base: 0.08, step: 0.16, observe: t
     font-size: var(--font-size-lg);
     margin-bottom: var(--space-md);
     text-align: justify;
+    white-space: normal; 
+    overflow-wrap: anywhere; 
+    word-wrap: break-word;
+    word-break: keep-all; 
+    hyphens: auto;
 
     &:last-child {
       margin-bottom: 0;
     }
+
+    padding: 0 var(--space-md);
   }
 }
 
