@@ -1,0 +1,51 @@
+@use 'sass:math';
+
+/* fadeInUp */
+/* animations.css (подключи в main.ts once) */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* базовый класс — только начальное состояние */
+.fadeInUp {
+  opacity: 0;
+  transform: translateY(20px);
+  /* по умолчанию delay = 0s, мы будем переопределять --delay inline */
+  --delay: 0s;
+}
+
+/* класс, который реально запускает анимацию.
+   не добавляй его в шаблоне — composable добавит его после установки --delay */
+.fadeInUp--play {
+  animation-name: fadeInUp;
+  animation-duration: 0.6s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-delay: var(--delay);
+}
+
+/* pulse */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pulse {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@for $i from 1 through 5 {
+  $delay: math.div(math.random(50), 100);
+  .fadeInUp-#{$i} {
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: #{$delay}s;
+  }
+}

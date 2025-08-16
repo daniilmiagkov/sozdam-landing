@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
+import { useAutoStagger } from '../../composables/useAutoStagger'
+
+const root = ref<HTMLElement | null>(null)
+
+useAutoStagger(root, { selector: '.fadeInUp', base: 0.08, step: 0.16, observe: true, startOnView: false })
 
 const modules = [
   {
@@ -19,24 +24,23 @@ const modules = [
     description: 'Модуль формы и экспорта. Предоставляет врачу удобный интерфейс для правок, подтверждения информации и экспорта в ЭМИС.',
   },
 ]
-
-// Анимация появления элементов
-const animated = ref(false)
-onMounted(() => {
-  animated.value = true
-})
 </script>
 
 <template>
-  <section :class="$style.section">
-    <!-- Декоративные элементы -->
-    <div :class="$style.decorCircle" />
-    <div :class="$style.decorDots" />
-
-    <h1 :class="[$style.title, { [$style.animated]: animated }]">
+  <section
+    ref="root"
+    :class="$style.section"
+  >
+    <h1
+      :class="[$style.title]"
+      class="fadeInUp"
+    >
       Архитектура
     </h1>
-    <p :class="[$style.lead, { [$style.animated]: animated }]">
+    <p
+      :class="[$style.lead]"
+      class="fadeInUp"
+    >
       Система разделена на независимые модули, каждый отвечает за отдельный этап обработки данных.
       Такое разделение облегчает разработку, тестирование и масштабирование.
     </p>
@@ -45,7 +49,9 @@ onMounted(() => {
       <div
         v-for="(m, i) in modules"
         :key="m.title"
-        :class="[$style.step, { [$style.animated]: animated }]"
+        :class="[$style.step]"
+        class="fadeInUp"
+
         :style="{ animationDelay: `${i * 0.15}s` }"
       >
         <div :class="$style.left">
@@ -76,33 +82,9 @@ onMounted(() => {
 </template>
 
 <style module lang="scss">
-// Глобальные анимации
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 @keyframes flowLine {
   0% {
-    transform: translateY(-30px); // старт чуть выше блока
+    transform: translateY(-30px);
     opacity: 0;
   }
   20% {
@@ -112,7 +94,7 @@ onMounted(() => {
     opacity: 1;
   }
   100% {
-    transform: translateY(calc(100% + 30px)); // полностью вниз
+    transform: translateY(300%);
     opacity: 0;
   }
 }
@@ -123,33 +105,6 @@ onMounted(() => {
   padding-top: calc(var(--header-height) + var(--section-padding));
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #f8fbff 0%, #f0f9ff 100%);
-}
-
-// Декоративные элементы
-.decorCircle {
-  position: absolute;
-  top: 10%;
-  right: 10%;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: linear-gradient(120deg, rgba(164, 202, 254, 0.15), rgba(199, 230, 255, 0.1));
-  filter: blur(40px);
-  z-index: 0;
-  animation: pulse 12s infinite ease-in-out;
-}
-
-.decorDots {
-  position: absolute;
-  bottom: 20%;
-  left: 5%;
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(100, 116, 139, 0.1) 2px, transparent 3px);
-  background-size: 30px 30px;
-  opacity: 0.3;
-  z-index: 0;
 }
 
 .title {
@@ -159,11 +114,6 @@ onMounted(() => {
   text-align: center;
   position: relative;
   z-index: 1;
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
 }
 
 .lead {
@@ -174,21 +124,6 @@ onMounted(() => {
   line-height: 1.6;
   text-align: center;
   position: relative;
-  z-index: 1;
-  opacity: 0;
-  transform: translateY(20px);
-  transition:
-    opacity 0.6s ease 0.1s,
-    transform 0.6s ease 0.1s;
-}
-
-.title.animated,
-.lead.animated {
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.lead.animated {
-  animation-delay: 0.1s;
 }
 
 .step {
@@ -197,12 +132,7 @@ onMounted(() => {
   grid-template-areas: 'left right';
   align-items: start;
   gap: var(--space-lg);
-  opacity: 0;
   transform: translateY(20px);
-
-  &.animated {
-    animation: fadeInUp 0.6s ease forwards;
-  }
 }
 
 .flow {
@@ -237,7 +167,7 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: var(--space-md);
     background: linear-gradient(145deg, #ffffff, #f0f9ff);
     border-radius: 10px;
     box-shadow:
@@ -298,7 +228,7 @@ onMounted(() => {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(4px);
   border-radius: 12px;
-  padding: 20px;
+  padding: var(--space-md);
   border: 1px solid rgba(209, 213, 219, 0.5);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
   transition: all 0.3s ease;

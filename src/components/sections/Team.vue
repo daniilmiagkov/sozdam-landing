@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import { useAutoStagger } from '../../composables/useAutoStagger'
+
 interface TeamMember {
   name: string
   role: string
@@ -38,20 +41,28 @@ const projectQR = [
   { name: 't.me/sozzdam', img: '/qr/Телеграмм_qr.png', link: 'https://t.me/sozzdam' },
   { name: 'vk.com/sozzdam', img: '/qr/ВК_qr.png', link: 'https://vk.com/sozzdam' },
 ]
+
+const root = ref<HTMLElement | null>(null)
+
+useAutoStagger(root, { selector: '.fadeInUp', base: 0.08, step: 0.16, observe: true, startOnView: false })
 </script>
 
 <template>
   <section
     id="team"
+    ref="root"
     :class="$style.section"
   >
-    <h1>Наша команда</h1>
+    <h1 class="fadeInUp">
+      Наша команда
+    </h1>
 
     <div :class="$style.container">
       <div
         v-for="member in team"
         :key="member.name"
         :class="$style.member"
+        class="fadeInUp"
       >
         <img
           :src="member.photo"
@@ -67,7 +78,10 @@ const projectQR = [
       </div>
     </div>
 
-    <div :class="$style.qrSection">
+    <div
+      :class="$style.qrSection"
+      class="fadeInUp"
+    >
       <h1>Мы в соцсетях</h1>
       <div :class="$style.qrLinks">
         <a
@@ -76,6 +90,7 @@ const projectQR = [
           :href="qr.link"
           target="_blank"
           :class="$style.qrItem"
+          class="fadeInUp"
         >
           <img
             :src="qr.img"

@@ -1,17 +1,25 @@
 <script setup lang="ts">
-// пустой setup
+import { ref } from 'vue'
+import { useAutoStagger } from '../../composables/useAutoStagger'
+
+const root = ref<HTMLElement | null>(null)
+
+useAutoStagger(root, { selector: '.fadeInUp', base: 0.08, step: 0.16, observe: true, startOnView: false })
 </script>
 
 <template>
   <section
     id="relevance"
+    ref="root"
     data-section="relevance"
     :class="$style.section"
   >
-    <h1>Актуальность</h1>
+    <h1 class="fadeInUp">
+      Актуальность
+    </h1>
 
     <section :class="$style.intro">
-      <p>
+      <p class="fadeInUp">
         Современная медицина работает в условиях высокой плотности приёмов и возросших требований к отчётности.
         Средний амбулаторный приём занимает около 12 минут, при этом на оформление документации по разным оценкам
         может уходить до 60–70% этого времени. Врачам остаётся мало времени на тщательный сбор анамнеза, объективный
@@ -19,7 +27,7 @@
         и ведёт к профессиональному выгоранию.
       </p>
 
-      <p>
+      <p class="fadeInUp">
         Проект «СОЗДАМ» направлен на снижение административной нагрузки: автоматизация распознавания речи,
         привлечение NLP для извлечения клинических сущностей и автоматическое формирование структурированных
         фрагментов медицинской документации позволит вернуть врачу самое ценное — время для пациента и клинического
@@ -28,7 +36,9 @@
     </section>
 
     <section :class="$style.impact">
-      <h2>Почему это важно</h2>
+      <h2 class="fadeInUp">
+        Почему это важно
+      </h2>
 
       <div
         :class="$style.cards"
@@ -37,6 +47,7 @@
         <article
           role="listitem"
           :class="$style.card"
+          class="fadeInUp"
         >
           <div :class="$style.cardHeader">
             Улучшение качества приёма
@@ -49,6 +60,7 @@
         <article
           role="listitem"
           :class="$style.card"
+          class="fadeInUp"
         >
           <div :class="$style.cardHeader">
             Снижение ошибок
@@ -61,6 +73,7 @@
         <article
           role="listitem"
           :class="$style.card"
+          class="fadeInUp"
         >
           <div :class="$style.cardHeader">
             Профилактика выгорания
@@ -73,6 +86,7 @@
         <article
           role="listitem"
           :class="$style.card"
+          class="fadeInUp"
         >
           <div :class="$style.cardHeader">
             Данные для аналитики
