@@ -127,6 +127,8 @@ useAutoStagger(root, { selector: '.fadeInUp', base: 0.08, step: 0.16, observe: t
 .intro {
   max-width: min(800px, 95%);
   margin: 0 auto var(--space-xl);
+  // background-color: var(--color-background);
+  // border-radius: 10px;
 
   p {
     color: var(--color-secondary);
@@ -134,10 +136,10 @@ useAutoStagger(root, { selector: '.fadeInUp', base: 0.08, step: 0.16, observe: t
     font-size: var(--font-size-lg);
     margin-bottom: var(--space-md);
     text-align: justify;
-    white-space: normal; 
-    overflow-wrap: anywhere; 
+    white-space: normal;
+    overflow-wrap: anywhere;
     word-wrap: break-word;
-    word-break: keep-all; 
+    word-break: keep-all;
     hyphens: auto;
 
     &:last-child {

@@ -72,7 +72,6 @@ const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value)
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255);
   z-index: var(--z-header);
   padding: 0 var(--container-padding);
   height: var(--header-height);
@@ -80,17 +79,23 @@ const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value)
 }
 
 .nav {
-  width: min(1200px, 100%);
-  margin: 0 auto;
+  // width: min(1200px, 100%);
+  // margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   z-index: 0;
+  background: rgba(255, 255, 255);
+  padding: 0 5%;
+  border-radius: 9999px;
 }
 
 @media (min-width: 641px) {
   .nav {
+    justify-content: center;
+  }
+  .header {
     justify-content: center;
   }
 }

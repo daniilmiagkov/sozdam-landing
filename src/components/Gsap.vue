@@ -1,44 +1,58 @@
-<script setup>
+<script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref, useCssModule } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useAutoStagger } from '../composables/useAutoStagger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const container = ref(null)
-let ctx = null
+const root = ref<HTMLElement | null>(null)
+const container = ref<HTMLElement | null>(null)
+let ctx: gsap.Context | null = null
 
 const classes = useCssModule()
+
+useAutoStagger(root, {
+  selector: '.fadeInUp',
+  base: 0.08,
+  step: 0.16,
+  observe: true,
+  startOnView: false,
+})
 
 onMounted(() => {
   if (!container.value)
     return
 
   ctx = gsap.context(() => {
-    const pinTargets = Array.from(container.value.getElementsByClassName(classes.step))
+    // строго типизируем
+    const pinTargets = Array.from(
+      container.value!.getElementsByClassName(classes.step),
+    ) as HTMLElement[]
+
     console.log(pinTargets)
+
     pinTargets.forEach((panel) => {
-      // анимация появления
       gsap.fromTo(
         panel,
-        { autoAlpha: 0, y: 0, x: -200 },
+        { autoAlpha: 0, y: 0, x: -500, rotate: -10 },
         {
           autoAlpha: 1,
           y: 0,
           x: 0,
-          // duration: 0.5,
+          rotate: 0,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: panel,
-            start: `-200px 30%`,
-            end: 'bottom 65%',
+            start: `200px 35%`,
+            end: '+=600px 0%',
             pin: true,
             pinSpacing: true,
             markers: true,
+            scrub: false,
             toggleActions: 'restart play play reverse',
           },
         },
-
       )
     })
     ScrollTrigger.refresh()
@@ -46,11 +60,11 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  if (ctx)
-    ctx.revert()
+  ctx?.revert()
   ScrollTrigger.getAll().forEach(t => t.kill())
   gsap.killTweensOf('*')
 })
+
 const modules = [
   {
     title: 'ASR',
@@ -72,33 +86,34 @@ const modules = [
 </script>
 
 <template>
-  <div>
-    <h1
-      :class="[$style.title]"
-      class="fadeInUp"
-    >
-      Архитектура
-    </h1>
-    <p
-      :class="[$style.lead]"
-      class="fadeInUp"
-    >
-      Система разделена на независимые модули, каждый отвечает за отдельный этап обработки данных.
-      Такое разделение облегчает разработку, тестирование и масштабирование.
-    </p>
+  <section
+    ref="root"
+    :class="$style.section"
+  >
+    <div :class="$style.lead">
+      <h1
+        :class="[$style.title]"
+        class="fadeInUp"
+      >
+        Архитектура
+      </h1>
+      <p class="fadeInUp">
+        Система разделена на независимые модули, каждый отвечает за отдельный этап обработки данных.
+        Такое разделение облегчает разработку, тестирование и масштабирование.
+      </p>
+    </div>
+
     <div
       ref="container"
       :class="$style.container"
     >
-      <div :class="$style.spacer" />
+      <!-- <div :class="$style.spacer" /> -->
 
       <div :class="$style.flow">
         <div
           v-for="(m, i) in modules"
           :key="m.title"
           :class="[$style.step]"
-          class="fadeInUp"
-          :style="{ animationDelay: `${i * 0.15}s` }"
         >
           <div :class="$style.left">
             <!-- Анимированный блок -->
@@ -127,7 +142,7 @@ const modules = [
       <div :class="$style.spacer" />
     </div>
     <!-- <div :class="$style.spacer" /> -->
-  </div>
+  </section>
 </template>
 
 <style lang="scss" module>
@@ -166,7 +181,6 @@ const modules = [
   padding: var(--section-padding);
   padding-top: calc(var(--header-height) + var(--section-padding));
   position: relative;
-  overflow: hidden;
 }
 
 .title {
@@ -175,17 +189,21 @@ const modules = [
   margin-bottom: var(--space-lg);
   text-align: center;
   position: relative;
-  z-index: 1;
 }
 
 .lead {
-  max-width: min(800px, 95%);
-  margin: 0 auto var(--space-xl);
-  color: var(--color-secondary);
-  font-size: var(--font-size-lg);
-  line-height: 1.6;
-  text-align: center;
-  position: relative;
+  position: sticky;
+  top: var(--header-height);
+  z-index: 10;
+  background: white;
+  p {
+    max-width: min(800px, 95%);
+    margin: 0 auto var(--space-xl);
+    color: var(--color-secondary);
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+    text-align: center;
+  }
 }
 
 .step {
@@ -229,7 +247,6 @@ const modules = [
   height: 60px;
   position: relative;
   perspective: 1000px;
-  cursor: pointer;
 
   &Inner {
     position: relative;
@@ -306,12 +323,6 @@ const modules = [
 
   @media (max-width: 768px) {
     text-align: center;
-  }
-
-  &:hover {
-    transform: translateX(5px);
-    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.1);
-    border-color: rgba(165, 180, 252, 0.5);
   }
 }
 </style>
