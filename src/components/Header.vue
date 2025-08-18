@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { Menu, X } from 'lucide-vue-next' // иконки бургер и крестик
+import { Menu, X } from 'lucide-vue-next'
 import { useRoute } from 'vue-router'
 
 const items = [
-  { text: 'Актуальность', link: 'relevance' },
-  { text: 'Архитектура', link: 'architecture' },
-  { text: 'Датасет', link: 'dataset' },
-  { text: 'О нас', link: 'team' },
-  { text: 'Демо', link: 'demo' },
+  { text: 'Актуальность', link: '/relevance' },
+  { text: 'Архитектура', link: '/architecture' },
+  { text: 'Датасет', link: '/dataset' },
+  { text: 'О нас', link: '/team' },
+  { text: 'Демо', link: '/demo' },
 ]
 
 const route = useRoute()
-const activeLink = computed(() => route?.hash?.replace('#', '') || '')
+const activeLink = computed(() => route.path)
 
 const isMenuOpen = ref(false)
 const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value)
@@ -33,7 +33,6 @@ const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value)
           name="icon-fade"
           mode="out-in"
         >
-          <!-- даём разный key чтобы transition сработал -->
           <Menu
             v-if="!isMenuOpen"
             key="menu"
@@ -48,25 +47,19 @@ const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value)
       </button>
 
       <!-- Список меню -->
-      <ul
-        :class="[
-          $style.list,
-          isMenuOpen && $style.open,
-        ]"
-      >
+      <ul :class="[$style.list, isMenuOpen && $style.open]">
         <li
           v-for="item in items"
           :key="item.link"
-          :class="[
-            $style.item,
-            item.link === activeLink && $style.active,
-          ]"
+          :class="[$style.item, item.link === activeLink && $style.active]"
           @click="isMenuOpen = false"
         >
-          <a
-            :href="`#${item.link}`"
+          <router-link
+            :to="item.link"
             :class="$style.link"
-          >{{ item.text }}</a>
+          >
+            {{ item.text }}
+          </router-link>
         </li>
       </ul>
     </nav>
