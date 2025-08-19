@@ -51,8 +51,6 @@ const modules = [
         :key="m.title"
         :class="[$style.step]"
         class="fadeInUp"
-
-        :style="{ animationDelay: `${i * 0.15}s` }"
       >
         <div :class="$style.left">
           <!-- Анимированный блок -->
@@ -166,7 +164,6 @@ const modules = [
   height: 60px;
   position: relative;
   perspective: 1000px;
-  cursor: pointer;
 
   &Inner {
     position: relative;
@@ -189,6 +186,7 @@ const modules = [
     color: var(--color-primary);
   }
 }
+
 .arrow {
   height: 100px;
   display: flex;
@@ -213,7 +211,7 @@ const modules = [
   top: 0;
   left: 0;
   width: 100%;
-  height: calc(20px + 14px); // 14px — высота стрелки
+  height: calc(20px + 14px); 
   background: linear-gradient(to bottom, #3b82f6, #60a5fa);
   animation: flowLine 1.5s infinite ease-in-out;
 }
@@ -222,9 +220,9 @@ const modules = [
   width: 14px;
   height: 14px;
   background: #3b82f6;
-  clip-path: polygon(50% 0%, /* верхняя точка */ 100% 100%, /* правый нижний угол */ 0% 100% /* левый нижний угол */);
-  border-radius: 2px; /* закругляем угол */
-  transform: rotate(180deg); /* если нужно вниз */
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100% );
+  border-radius: 2px; 
+  transform: rotate(180deg); 
 }
 
 .right {
@@ -243,12 +241,6 @@ const modules = [
 
   @media (max-width: 768px) {
     text-align: center;
-  }
-
-  &:hover {
-    transform: translateX(5px);
-    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.1);
-    border-color: rgba(165, 180, 252, 0.5);
   }
 }
 </style>
