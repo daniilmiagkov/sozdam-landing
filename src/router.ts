@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AppLayout from './App.vue'
-import Gsap from './components/Gsap.vue'
 import ArchitectureSection from './components/sections/Architecture.vue'
 import DatasetSection from './components/sections/Dataset.vue'
 import DemoSection from './components/sections/Demo.vue'
@@ -20,7 +19,6 @@ const routes = [
       { path: 'demo', component: DemoSection },
     ],
   },
-  { path: '/gsap', component: Gsap },
 
   { path: '/:catchAll(.*)', redirect: '/relevance' },
 ]
