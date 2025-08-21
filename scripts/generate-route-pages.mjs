@@ -1,7 +1,8 @@
 // scripts/generate-route-pages.mjs
-import fs from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
+import fs from 'node:fs'
+import path from 'node:path'
+import process from 'node:process'
+import { fileURLToPath } from 'node:url'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -15,7 +16,7 @@ const routes = [
   'architecture',
   'dataset',
   'team',
-  'demo'
+  'demo',
 ]
 
 if (!fs.existsSync(indexPath)) {
@@ -26,7 +27,8 @@ if (!fs.existsSync(indexPath)) {
 const content = fs.readFileSync(indexPath, 'utf8')
 
 for (const route of routes) {
-  if (!route) continue
+  if (!route)
+    continue
   const dir = path.join(distDir, route)
   fs.mkdirSync(dir, { recursive: true })
   const target = path.join(dir, 'index.html')
