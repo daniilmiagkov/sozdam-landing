@@ -28,7 +28,7 @@ jobs:
         run: pnpm build
 
       - name: Generate route pages
-        run: node ./scripts/generate-route-pages.js
+        run: node ./scripts/generate-route-pages.mjs
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
