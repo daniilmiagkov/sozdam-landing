@@ -79,8 +79,8 @@ const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value)
 }
 
 .nav {
-  // width: min(1200px, 100%);
-  // margin: 0 auto;
+  width: min(1200px, 100%);
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;

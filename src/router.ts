@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AppLayout from './App.vue'
-import Mermaid from './components/effects/Mermaid.vue'
 import Gsap from './components/Gsap.vue'
 import ArchitectureSection from './components/sections/Architecture.vue'
 import DatasetSection from './components/sections/Dataset.vue'
@@ -22,7 +21,6 @@ const routes = [
     ],
   },
   { path: '/gsap', component: Gsap },
-  { path: '/mermaid', component: Mermaid },
 
   { path: '/:catchAll(.*)', redirect: '/relevance' },
 ]
