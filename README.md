@@ -1,5 +1,20 @@
-# Vue 3 + TypeScript + Vite
+# Проект СОЗДАМ
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Проект "СОЗДАМ" (Система Оперативного Заполнения Документации Автоматизированными Методами) — это программно-аппаратный комплекс, которой помогает врачам автоматизировать процесс ведения медицинской документации с помощью распознавания речи и обработки естественного языка.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+Подробнее: https://sozzdam.ru/ (Адаптирован под мобильные устройства)
+
+## Стек технологий
+
+- Vue 3
+- TypeScript
+- Vite
+- SCSS
+
+## Деплой
+
+Проект развёрнут на GitHub Pages с поддержкой собственного домена.
+
+## Разработка сайта
+
+**Мягков Даниил Львович** — Руководитель разработки проекта/ Фронтенд-разработчик
