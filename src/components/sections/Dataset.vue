@@ -1,21 +1,35 @@
 <script setup lang="ts">
-// пустой setup
+import { ref } from 'vue'
+import { useAutoStagger } from '../../composables/useAutoStagger'
+
+const root = ref<HTMLElement | null>(null)
+
+useAutoStagger(root, { selector: '.fadeInUp', base: 0.08, step: 0.16, observe: true, startOnView: false })
 </script>
 
 <template>
   <section
     id="dataset"
+    ref="root"
     data-section="dataset"
     :class="$style.section"
   >
-    <h1>Датасет</h1>
+    <h1 class="fadeInUp">
+      Датасет
+    </h1>
 
-    <p :class="$style.lead">
+    <p
+      :class="$style.lead"
+      class="fadeInUp"
+    >
       Качество и разнообразие данных напрямую влияют на эффективность модели.
       Мы используем анонимизированные реальные записи, дополняем их синтетически сгенерированными примерами и снабжаем экспертной разметкой, чтобы модель обучалась на максимально полном и разнообразном материале.
     </p>
 
-    <section :class="$style.sample">
+    <section
+      :class="$style.sample"
+      class="fadeInUp"
+    >
       <h3>Фрагмент записи (JSON)</h3>
       <pre :class="$style.json">
 {
